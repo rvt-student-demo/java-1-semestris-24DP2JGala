@@ -1,30 +1,55 @@
 package rvt;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class MainProgram {
     public static void main(String[] args) {
 
-        PaymentCard paulsCard = new PaymentCard(20);
-        PaymentCard mattsCard = new PaymentCard(30);
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Books> books = new ArrayList<>();
 
-        paulsCard.eatHeartily();
-        mattsCard.eatAffordably();
+        while (true) {
+            System.out.print("Title: ");
+            String name = scanner.nextLine();
 
-        System.out.println("Paul: " + paulsCard);
-        System.out.println("Matt: " + mattsCard);
+            if (name.isEmpty()) {
+                System.out.println();
+                break;
 
-        paulsCard.addMoney(20);
-        mattsCard.eatHeartily();
+            }
 
-        System.out.println("Paul: " + paulsCard);
-        System.out.println("Matt: " + mattsCard);
+            System.out.print("Pages: ");
+            int pages = Integer.valueOf(scanner.nextLine());
 
-        paulsCard.eatAffordably();
-        paulsCard.eatAffordably();
+            System.out.print("Publication year: ");
+            int age = Integer.valueOf(scanner.nextLine());
 
-        mattsCard.addMoney(50);
+            books.add(new Books(name, pages, age));
 
-        System.out.println("Paul: " + paulsCard);
-        System.out.println("Matt: " + mattsCard);
+            System.out.println(); // tas ir no sevīm (lai stilistiski padarītu programmu skaistāku)
+            
+        }
+
+        System.out.print("What information will be printed? ");
+        String information = scanner.nextLine();
+
+        if (information.equals("everything")) {
+            for (Books x: books) {
+                System.out.println(x);
+
+            }
+
+        } else if (information.equals("name")) {
+            for (Books x: books) {
+                System.out.println(x.getName());
+
+            }
+
+        } else {
+            System.out.println("Err."); // šo es pievienoju no sevīm
+
+        }
         
     }
 
