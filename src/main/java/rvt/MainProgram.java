@@ -1,36 +1,30 @@
 package rvt;
-import java.util.Scanner;
 
 public class MainProgram {
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        PaymentCard paulsCard = new PaymentCard(20);
+        PaymentCard mattsCard = new PaymentCard(30);
 
-        Statistics numbers = new Statistics();
-        Statistics evens = new Statistics();
-        Statistics odd = new Statistics();
+        paulsCard.eatHeartily();
+        mattsCard.eatAffordably();
 
-        System.out.println("Enter numbers: ");
-        
-        while (true) {
-            int number = Integer.valueOf(scanner.nextLine());
-            if (number == -1) break;
+        System.out.println("Paul: " + paulsCard);
+        System.out.println("Matt: " + mattsCard);
 
-            numbers.addNumber(number);
+        paulsCard.addMoney(20);
+        mattsCard.eatHeartily();
 
-            if (number % 2 == 0) {
-                evens.addNumber(number);
+        System.out.println("Paul: " + paulsCard);
+        System.out.println("Matt: " + mattsCard);
 
-            } else {
-                odd.addNumber(number);
+        paulsCard.eatAffordably();
+        paulsCard.eatAffordably();
 
-            }
+        mattsCard.addMoney(50);
 
-        }
-
-        System.out.println("Sum: " + numbers.sum());
-        System.out.println("Sum of even numbers: " + evens.sum());
-        System.out.println("Sum of odd numbers: " + odd.sum());
+        System.out.println("Paul: " + paulsCard);
+        System.out.println("Matt: " + mattsCard);
         
     }
 
