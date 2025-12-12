@@ -1,55 +1,20 @@
 package rvt;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class MainProgram {
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        ArrayList<Books> books = new ArrayList<>();
+        Counter counter1 = new Counter(10);
+        Counter counter2 = new Counter();
 
-        while (true) {
-            System.out.print("Title: ");
-            String name = scanner.nextLine();
+        counter1.increase(); // 10 + 1 = 10
+        counter1.dicrease(); // 11 -1 = 10
 
-            if (name.isEmpty()) {
-                System.out.println();
-                break;
+        System.out.println(counter1.value()); // izvada 10
 
-            }
+        counter2.increase(2); // 0 + 2 = 2
+        counter2.dicrease(1); // 2 - 1 = 1
 
-            System.out.print("Pages: ");
-            int pages = Integer.valueOf(scanner.nextLine());
-
-            System.out.print("Publication year: ");
-            int age = Integer.valueOf(scanner.nextLine());
-
-            books.add(new Books(name, pages, age));
-
-            System.out.println(); // tas ir no sevīm (lai stilistiski padarītu programmu skaistāku)
-            
-        }
-
-        System.out.print("What information will be printed? ");
-        String information = scanner.nextLine();
-
-        if (information.equals("everything")) {
-            for (Books x: books) {
-                System.out.println(x);
-
-            }
-
-        } else if (information.equals("name")) {
-            for (Books x: books) {
-                System.out.println(x.getName());
-
-            }
-
-        } else {
-            System.out.println("Err."); // šo es pievienoju no sevīm
-
-        }
+        System.out.println(counter2.value()); // izvada 1
         
     }
 
